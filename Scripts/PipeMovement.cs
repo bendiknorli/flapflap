@@ -19,5 +19,10 @@ public class PipeMovement : MonoBehaviour
         Vector3 currentPosition = transform.position;
 
         transform.position = new Vector3(currentPosition.x - pipeSpeed * Time.deltaTime, currentPosition.y, currentPosition.z);
+
+        if (transform.position.x < -30)
+        {
+            Destroy(gameObject);
+        }
     }
 }

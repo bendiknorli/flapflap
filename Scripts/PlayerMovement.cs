@@ -11,20 +11,33 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator playerAnimator;
 
+    public ParticleSystem wingParticleSystem;
+
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!gameManager.gameHasStarted)
+        {
+            gameObject.transform.position = new Vector3(0, Mathf.Sin(2 * Time.time), 0);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            gameManager.gameHasStarted = true;
+
             rb.velocity = upForce;
 
             playerAnimator.SetTrigger("WingFlap");
+
+            wingParticleSystem.Play();
         }
     }
 }

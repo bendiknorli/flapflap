@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public int score;
 
+    public bool gameHasStarted;
+
     public bool gameHasEnded;
 
     public void EndGame()

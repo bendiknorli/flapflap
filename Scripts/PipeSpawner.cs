@@ -22,7 +22,7 @@ public class PipeSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameManager.gameHasEnded)
+        if(gameManager.gameHasEnded || !gameManager.gameHasStarted)
         {
             return;
         }
